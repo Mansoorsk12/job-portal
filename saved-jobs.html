@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saved Jobs – JobNest</title>
+    <meta
+      name="description"
+      content="Review the jobs you've saved on JobNest and apply when you're ready."
+    />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body data-page="jobs">
+    <header id="site-header"></header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Your saved jobs</h1>
+          <p>Roles you've bookmarked. Apply whenever you're ready.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="results-bar">
+            <div class="results-count"><b id="savedCount">0</b> saved jobs</div>
+            <a href="jobs.html" class="btn btn-outline btn-sm">Browse more jobs</a>
+          </div>
+          <div class="jobs-list" id="savedGrid"></div>
+          <div class="empty-state" id="savedEmpty" hidden>
+            <span class="empty-icon" id="ic-empty"></span>
+            <h3>No saved jobs yet</h3>
+            <p>Tap the heart icon on any job to save it here for later.</p>
+            <a href="jobs.html" class="btn btn-primary">Explore jobs</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Job details modal -->
+    <div class="modal-overlay" id="jobModal" role="dialog" aria-modal="true" aria-labelledby="jobModalTitle">
+      <div class="modal">
+        <div class="modal-body" id="jobModalContent"></div>
+      </div>
+    </div>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/saved-jobs.js"></script>
+  </body>
+</html>

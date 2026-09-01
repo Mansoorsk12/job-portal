@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard – JobNest</title>
+    <meta name="description" content="Your JobNest dashboard: track applications, saved jobs and profile completeness." />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body data-page="">
+    <header id="site-header"></header>
+
+    <main>
+      <section class="dash-hero">
+        <div class="container dash-hero-inner">
+          <div>
+            <p class="dash-eyebrow">Dashboard</p>
+            <h1 id="dashGreeting">Welcome back</h1>
+            <p class="dash-sub" id="dashSub">Here's what's happening with your job search.</p>
+          </div>
+          <div class="dash-hero-actions">
+            <a href="jobs.html" class="btn btn-primary">Find jobs</a>
+            <a href="profile.html" class="btn btn-outline">Edit profile</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tight">
+        <div class="container">
+          <div class="stats-grid" id="statsGrid"></div>
+        </div>
+      </section>
+
+      <section class="section section-tight">
+        <div class="container dash-columns">
+          <!-- Applications -->
+          <div class="dash-col">
+            <div class="panel">
+              <div class="panel-head">
+                <h2>Your applications</h2>
+                <span class="muted" id="appCountLabel"></span>
+              </div>
+              <div id="appsList" class="apps-list"></div>
+              <div class="empty-state" id="appsEmpty" hidden>
+                <span class="empty-icon" id="ic-apps"></span>
+                <h3>No applications yet</h3>
+                <p>When you apply to jobs they'll show up here so you can track their status.</p>
+                <a href="jobs.html" class="btn btn-primary">Browse jobs</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="dash-side">
+            <div class="panel">
+              <div class="panel-head"><h2>Profile strength</h2></div>
+              <div class="progress-wrap">
+                <div class="progress-ring" id="profileRing">
+                  <span id="profilePct">0%</span>
+                </div>
+                <div>
+                  <p class="muted" id="profileHint">Complete your profile to stand out.</p>
+                  <a href="profile.html" class="btn btn-outline btn-sm">Update profile</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <h2>Saved jobs</h2>
+                <a href="saved-jobs.html" class="link-sm">View all</a>
+              </div>
+              <div id="savedMini" class="saved-mini"></div>
+              <p class="muted" id="savedMiniEmpty" hidden>You haven't saved any jobs yet.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
