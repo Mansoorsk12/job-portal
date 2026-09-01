@@ -1,0 +1,225 @@
+/* =========================================================
+   JobNest – Responsive styles
+   Breakpoints: 1024px (tablet/laptop), 768px (tablet),
+                560px (mobile)
+   ========================================================= */
+
+/* ---- Laptop / small desktop ---- */
+@media (max-width: 1024px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-art {
+    display: none;
+  }
+
+  .searchbar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .searchbar .btn {
+    grid-column: 1 / -1;
+  }
+
+  .jobs-layout {
+    grid-template-columns: 240px 1fr;
+  }
+
+  .dash-layout {
+    grid-template-columns: 220px 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---- Tablet ---- */
+@media (max-width: 860px) {
+  .nav-links,
+  .nav-actions .desktop-only {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: grid;
+  }
+
+  /* mobile nav drawer */
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 12px;
+    gap: 4px;
+    box-shadow: var(--shadow-md);
+    align-items: stretch;
+  }
+
+  .nav-links.mobile-open a {
+    padding: 12px 14px;
+    font-size: 1rem;
+  }
+
+  .nav-links.mobile-open .mobile-auth {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-links.mobile-open .mobile-auth .btn {
+    flex: 1;
+  }
+
+  /* jobs page: filters become collapsible */
+  .jobs-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    position: static;
+    display: none;
+  }
+
+  .filters.mobile-open {
+    display: block;
+  }
+
+  .filter-toggle-mobile {
+    display: inline-flex;
+  }
+
+  /* dashboard stacks */
+  .dash-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-nav {
+    position: static;
+    display: flex;
+    overflow-x: auto;
+    padding: 8px;
+    gap: 4px;
+  }
+
+  .dash-nav a {
+    white-space: nowrap;
+    padding: 9px 14px;
+  }
+
+  /* auth: single column */
+  .auth-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-side {
+    display: none;
+  }
+
+  .page-searchbar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 560px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .searchbar {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 48px 0 30px;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    gap: 20px;
+  }
+
+  .form-grid.cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .resume-doc {
+    padding: 24px;
+  }
+
+  .toast-stack {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .toast {
+    max-width: none;
+  }
+}
+
+/* ---- Very small ---- */
+@media (max-width: 380px) {
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Print (resume) ---- */
+@media print {
+  .site-header,
+  .site-footer,
+  .dash-nav,
+  .panel-head .btn,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .resume-doc {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .dash-layout {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browse Jobs – JobNest</title>
+    <meta
+      name="description"
+      content="Browse and filter thousands of jobs on JobNest. Filter by location, experience, job type and skills, then apply in one click."
+    />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body data-page="jobs">
+    <header id="site-header"></header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Find your next role</h1>
+          <p>Browse all open positions and filter to exactly what you want.</p>
+
+          <form class="page-searchbar" id="jobSearch" role="search">
+            <label class="search-field">
+              <span class="sr-only">Keywords</span>
+              <span aria-hidden="true" id="ic-search"></span>
+              <input
+                type="text"
+                id="kw"
+                placeholder="Job title, company, or skill"
+                autocomplete="off"
+              />
+            </label>
+            <label class="search-field">
+              <span class="sr-only">Location</span>
+              <span aria-hidden="true" id="ic-pin"></span>
+              <input
+                type="text"
+                id="loc"
+                placeholder="City or remote"
+                autocomplete="off"
+              />
+            </label>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button
+              type="button"
+              class="btn btn-ghost filter-toggle-mobile"
+              id="filterToggle"
+            >
+              Filters
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <div class="container">
+        <div class="jobs-layout">
+          <!-- ============ FILTER SIDEBAR ============ -->
+          <aside class="filters" id="filters" aria-label="Job filters">
+            <div class="filters-head">
+              <h3>Filters</h3>
+              <button class="filter-clear" id="clearFilters">Clear all</button>
+            </div>
+
+            <div class="filter-group">
+              <h4>Job Type</h4>
+              <div id="fType"></div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Work Mode</h4>
+              <div id="fMode"></div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Experience</h4>
+              <div id="fExp"></div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Location</h4>
+              <div id="fLoc"></div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Skills</h4>
+              <div id="fSkills"></div>
+            </div>
+          </aside>
+
+          <!-- ============ RESULTS ============ -->
+          <section>
+            <div class="results-bar">
+              <div class="results-count">
+                <b id="resultCount">0</b> jobs found
+              </div>
+              <div class="sort-wrap">
+                <label for="sort" style="color: var(--muted); font-size: 0.9rem"
+                  >Sort by</label
+                >
+                <select id="sort">
+                  <option value="recent">Most recent</option>
+                  <option value="salary-high">Salary: High to Low</option>
+                  <option value="salary-low">Salary: Low to High</option>
+                  <option value="title">Title (A-Z)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="jobs-list" id="jobsList" aria-live="polite"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- ============ JOB DETAIL MODAL ============ -->
+    <div class="modal-overlay" id="jobModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal">
+        <div class="modal-body" id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- ============ APPLY MODAL ============ -->
+    <div class="modal-overlay" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="applyTitle">
+      <div class="modal modal-sm">
+        <div class="modal-header">
+          <div class="modal-title">
+            <h2 id="applyTitle">Apply for this job</h2>
+            <span class="company-name" id="applyFor"></span>
+          </div>
+          <button class="modal-close" data-close-apply aria-label="Close">
+            <span id="ic-close-apply"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="applyForm" class="form-grid" novalidate>
+            <div class="field">
+              <label for="apName">Full Name <span class="req">*</span></label>
+              <input type="text" id="apName" required />
+              <span class="error-msg">Please enter your name.</span>
+            </div>
+            <div class="field">
+              <label for="apEmail">Email <span class="req">*</span></label>
+              <input type="email" id="apEmail" required />
+              <span class="error-msg">Enter a valid email address.</span>
+            </div>
+            <div class="field">
+              <label for="apPhone">Phone <span class="req">*</span></label>
+              <input type="tel" id="apPhone" required />
+              <span class="error-msg">Enter a valid 10-digit phone.</span>
+            </div>
+            <div class="field">
+              <label for="apCover">Cover Note</label>
+              <textarea
+                id="apCover"
+                placeholder="Tell the employer why you're a great fit (optional)"
+              ></textarea>
+            </div>
+            <div class="field">
+              <label>Resume</label>
+              <label class="file-drop" for="apResume">
+                <span id="apResumeLabel"
+                  >Click to attach your resume (PDF, DOC)</span
+                >
+                <input type="file" id="apResume" accept=".pdf,.doc,.docx" />
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Submit Application
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jobs.js"></script>
+  </body>
+</html>

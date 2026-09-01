@@ -1,0 +1,12 @@
+{
+  "name": "jobnest",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "sirv . --dev --host 0.0.0.0 --port 3000 --no-clear",
+    "start": "sirv . --host 0.0.0.0 --port 3000"
+  },
+  "devDependencies": {
+    "sirv-cli": "^3.0.0"
+  }
+}

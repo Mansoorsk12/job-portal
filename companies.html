@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Companies – JobNest</title>
+    <meta
+      name="description"
+      content="Explore top companies hiring on JobNest and browse their open positions."
+    />
+    <meta name="theme-color" content="#4f46e5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body data-page="companies">
+    <header id="site-header"></header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Top companies hiring now</h1>
+          <p>Discover great places to work and explore their open roles.</p>
+          <form class="page-searchbar" id="companySearch" role="search" style="grid-template-columns: 1fr auto">
+            <label class="search-field">
+              <span class="sr-only">Search companies</span>
+              <span aria-hidden="true" id="ic-search"></span>
+              <input
+                type="text"
+                id="companyKw"
+                placeholder="Search by company or industry"
+                autocomplete="off"
+              />
+            </label>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="results-bar">
+            <div class="results-count">
+              <b id="companyCount">0</b> companies
+            </div>
+          </div>
+          <div class="cards-grid" id="companiesGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Company jobs modal -->
+    <div class="modal-overlay" id="companyModal" role="dialog" aria-modal="true" aria-labelledby="companyModalTitle">
+      <div class="modal">
+        <div class="modal-body" id="companyModalContent"></div>
+      </div>
+    </div>
+
+    <footer id="site-footer"></footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/companies.js"></script>
+  </body>
+</html>
